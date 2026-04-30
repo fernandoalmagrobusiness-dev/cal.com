@@ -36,7 +36,7 @@ function BasePhoneInput({
   className = "",
   onChange,
   value,
-  defaultCountry = "us",
+  defaultCountry = "es",
   ...rest
 }: PhoneInputProps) {
   const isPlatform = useIsPlatform();
@@ -162,7 +162,7 @@ function BasePhoneInputWeb({
 
 const useDefaultCountry = () => {
   const defaultPhoneCountryFromStore = useBookerStore((state) => state.defaultPhoneCountry);
-  const [defaultCountry, setDefaultCountry] = useState<CountryCode>(defaultPhoneCountryFromStore || "us");
+  const [defaultCountry, setDefaultCountry] = useState<CountryCode>(defaultPhoneCountryFromStore || "es");
   const query = trpc.viewer.public.countryCode.useQuery(undefined, {
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
@@ -188,7 +188,7 @@ const useDefaultCountry = () => {
         if (navCountry && isSupportedCountry(navCountry)) {
           setDefaultCountry(navCountry.toLowerCase() as CountryCode);
         } else {
-          setDefaultCountry("us");
+          setDefaultCountry("es");
         }
       }
     },
